@@ -8,6 +8,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 
+/**
+ * abstract class which configures how model is created
+ * it doesn't create table in database
+ */
 @MappedSuperclass
 @Data
 public abstract class AbstractModel {

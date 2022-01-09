@@ -1,6 +1,5 @@
 package pl.pabjan.schoolmanagementsystem.model.User;
 
-import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -19,39 +18,19 @@ public abstract class AbstractUser {
     @Column(name = "id")
     private Long id;
 
-    @NotBlank
+    @Column(name = "password")
+    private String password;
+
     @Column(name = "name")
     private String name;
 
-    @NotBlank
     @Column(name = "lastname")
     private String lastname;
 
-    @NotBlank
     @Column(name = "date_of_birth")
     private LocalDate dateOfBirth;
 
-    @NotBlank
     @Column(name = "role")
     private String role;
 
-
-    @Override
-    public boolean equals(Object obj) {
-        if(this==obj) {
-            return true;
-        }
-        if(obj==null) {
-            return false;
-        }
-        if(getClass()!=obj.getClass()) {
-            return false;
-        }
-        AbstractUser other = (AbstractUser) obj;
-        if(getId()==null || other.getId() == null) {
-            return false;
-        }
-
-        return getId().equals(other.getId());
-    }
 }
