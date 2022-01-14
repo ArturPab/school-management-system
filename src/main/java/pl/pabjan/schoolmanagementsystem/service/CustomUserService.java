@@ -24,6 +24,10 @@ public class CustomUserService {
     private final StudentRepo studentRepo;
     private final UserMapper userMapper;
 
+    /**
+     * connecting all teachers, admins, students together as users
+     * @return users
+     */
     public List<UserResponse> getAllUsers() {
         List<Admin> admins = adminRepo.findAll();
         List<Teacher> teachers = teacherRepo.findAll();

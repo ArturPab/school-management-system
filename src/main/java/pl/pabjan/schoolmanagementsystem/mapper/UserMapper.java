@@ -2,14 +2,15 @@ package pl.pabjan.schoolmanagementsystem.mapper;
 
 import org.springframework.stereotype.Component;
 import pl.pabjan.schoolmanagementsystem.model.User.AbstractUser;
-import pl.pabjan.schoolmanagementsystem.model.User.Admin;
-import pl.pabjan.schoolmanagementsystem.model.User.Student;
-import pl.pabjan.schoolmanagementsystem.model.User.Teacher;
 import pl.pabjan.schoolmanagementsystem.model.dto.UserResponse;
 
 @Component
 public class UserMapper {
 
+    /**
+     * @param user - any class that extends AbstractUser class
+     * @return user response model
+     */
     public UserResponse mapToDto(Object user) {
         UserResponse userResponse = new UserResponse();
         userResponse.setId(((AbstractUser) user).getId());
@@ -18,9 +19,5 @@ public class UserMapper {
         userResponse.setRole(((AbstractUser) user).getRole());
 
         return userResponse;
-    }
-
-    private boolean isClassCorrect(Object user) {
-        return user.getClass() == Admin.class || user.getClass() == Teacher.class || user.getClass() == Student.class;
     }
 }
