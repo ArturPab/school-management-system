@@ -44,6 +44,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests().antMatchers("/api/auth/**")
                 .permitAll()
                 .and()
+                .authorizeRequests().antMatchers("/api/user/**").hasRole("ADMIN")
+                .and()
                 .authorizeRequests().anyRequest().authenticated()
                 .and()
                 .addFilter(new AuthenticationFilter(loginUrl, authenticationManagerBean(), secret, tokenExpirationTime))
