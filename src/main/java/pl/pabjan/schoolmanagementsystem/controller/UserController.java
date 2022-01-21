@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import pl.pabjan.schoolmanagementsystem.model.dto.UserResponse;
-import pl.pabjan.schoolmanagementsystem.service.CustomUserService;
+import pl.pabjan.schoolmanagementsystem.service.UserService;
 
 import java.util.List;
 
@@ -17,7 +17,7 @@ import static org.springframework.http.ResponseEntity.status;
 @RestController
 @RequestMapping("/api/user")
 public class UserController {
-    private final CustomUserService userService;
+    private final UserService userService;
 
     /**
      * @return http status with list of user response (teachers, students, admins)

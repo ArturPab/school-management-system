@@ -17,7 +17,7 @@ import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor
-public class CustomUserService {
+public class UserService {
 
     private final AdminRepo adminRepo;
     private final TeacherRepo teacherRepo;
