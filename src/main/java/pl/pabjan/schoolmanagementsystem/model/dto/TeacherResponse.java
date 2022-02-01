@@ -5,11 +5,10 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
-
 @EqualsAndHashCode(callSuper = true)
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Data
-public class AdminResponse extends AbstractUserResponse {
-    private Long id;
+public class TeacherResponse extends AbstractUserResponse {
+    private String subjectName;
 }

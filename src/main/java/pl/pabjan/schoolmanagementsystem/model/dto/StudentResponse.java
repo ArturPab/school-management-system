@@ -2,17 +2,15 @@ package pl.pabjan.schoolmanagementsystem.model.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDate;
 
+@EqualsAndHashCode(callSuper = true)
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class StudentResponse {
+public class StudentResponse extends AbstractUserResponse {
 
-    private String name;
-    private String lastname;
-    private LocalDate dateOfBirth;
     private String className;
 }
