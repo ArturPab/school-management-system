@@ -26,7 +26,7 @@ public class StudentService {
         List<Student> students = studentRepo.findAll();
         List<SchoolClass> classes = classRepo.findAll();
 
-        return students.stream().map(student -> studentMapper.mapToDto(student, classRepo.findAll())).collect(Collectors.toList());
+        return students.stream().map(student -> studentMapper.mapToDto(student, classes)).collect(Collectors.toList());
     }
 
     public StudentResponse getStudentById(Long id) {
