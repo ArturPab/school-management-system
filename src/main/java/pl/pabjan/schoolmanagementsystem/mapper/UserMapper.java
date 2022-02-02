@@ -11,12 +11,12 @@ public class UserMapper {
      * @param user - any class that extends AbstractUser class
      * @return user response model
      */
-    public UserResponse mapToDto(Object user) {
+    public UserResponse mapToDto(AbstractUser user) {
         UserResponse userResponse = new UserResponse();
-        userResponse.setId(((AbstractUser) user).getId());
-        userResponse.setName(((AbstractUser) user).getName());
-        userResponse.setLastname(((AbstractUser) user).getLastname());
-        userResponse.setRole(((AbstractUser) user).getRole());
+        userResponse.setId(user.getId());
+        userResponse.setName(user.getName());
+        userResponse.setLastname(user.getLastname());
+        userResponse.setRole(user.getRole());
 
         return userResponse;
     }
