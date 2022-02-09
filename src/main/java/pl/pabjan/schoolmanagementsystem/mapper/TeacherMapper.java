@@ -1,6 +1,5 @@
 package pl.pabjan.schoolmanagementsystem.mapper;
 
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 import pl.pabjan.schoolmanagementsystem.model.Subject;
 import pl.pabjan.schoolmanagementsystem.model.User.Teacher;
@@ -20,13 +19,14 @@ public class TeacherMapper {
         teacherResponse.setLastname(teacher.getLastname());
         teacherResponse.setDateOfBirth(teacher.getDateOfBirth());
         Optional<Subject> currentSubject = subjects.stream().filter(subject -> Objects.equals(subject.getId(), teacher.getSubjectId())).findFirst();
-        if(currentSubject.isPresent())
+        if (currentSubject.isPresent())
             teacherResponse.setSubjectName(currentSubject.get().getName());
         else
             teacherResponse.setSubjectName("Empty");
 
         return teacherResponse;
     }
+
     public TeacherResponse mapToDto(Teacher teacher, String subjectName) {
         TeacherResponse teacherResponse = new TeacherResponse();
         teacherResponse.setName(teacher.getName());
