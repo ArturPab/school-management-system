@@ -9,7 +9,7 @@ import pl.pabjan.schoolmanagementsystem.model.MarkValue;
 import pl.pabjan.schoolmanagementsystem.model.dto.MarkRequest;
 import pl.pabjan.schoolmanagementsystem.repository.MarkRepo;
 import pl.pabjan.schoolmanagementsystem.repository.StudentRepo;
-import pl.pabjan.schoolmanagementsystem.repository.SubjectRepo;
+import pl.pabjan.schoolmanagementsystem.repository.SubjectGroupRepo;
 
 @Service
 @AllArgsConstructor
@@ -17,7 +17,7 @@ public class MarkService {
     private final MarkRepo markRepo;
     private final MarkMapper markMapper;
     private final StudentRepo studentRepo;
-    private final SubjectRepo subjectRepo;
+    private final SubjectGroupRepo subjectGroupRepo;
 
     public void createMark(MarkRequest markRequest) throws InvalidMarkValueException {
         if (!markRequestIsCorrect(markRequest)) {
@@ -29,7 +29,7 @@ public class MarkService {
     }
 
     private boolean markRequestIsCorrect(MarkRequest markRequest) {
-        return studentRepo.findById(markRequest.getStudentId()).isPresent() && subjectRepo.findById(markRequest.getSubjectId()).isPresent() && markIsCorrect(markRequest.getMark());
+        return studentRepo.findById(markRequest.getStudentId()).isPresent() && subjectGroupRepo.findById(markRequest.getSubjectGroupId()).isPresent() && markIsCorrect(markRequest.getMark());
     }
 
     private boolean markIsCorrect(double mark) {

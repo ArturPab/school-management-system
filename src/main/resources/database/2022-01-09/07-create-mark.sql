@@ -8,7 +8,7 @@ create table mark
 ) not null,
     inserted datetime(6),
     description varchar(255),
-    subject_id bigint not null,
+    subject_group_id bigint not null,
     student_id bigint not null,
     primary key (id)
 ) engine=InnoDB AUTO_INCREMENT = 1;

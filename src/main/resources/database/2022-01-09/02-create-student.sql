@@ -9,6 +9,6 @@ create table student
     lastname      varchar(100) not null,
     date_of_birth date         not null,
     role          varchar(20)  not null,
-    class_id      bigint,
+    school_class_id      bigint,
     primary key (id)
 ) engine=InnoDB AUTO_INCREMENT = 10000;

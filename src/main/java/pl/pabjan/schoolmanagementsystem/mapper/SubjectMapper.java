@@ -20,7 +20,7 @@ public class SubjectMapper {
     public SubjectWithMarksResponse mapToDto(SubjectGroup subjectGroup, List<Mark> marks) {
         SubjectWithMarksResponse subjectWithMarksResponse = new SubjectWithMarksResponse();
         subjectWithMarksResponse.setSubjectName(subjectGroup.getSubject().getName());
-        Set<Mark> newMarks = marks.stream().filter(mark -> mark.getSubject().getId().equals(subjectGroup.getSubject().getId())).collect(Collectors.toSet());
+        Set<Mark> newMarks = marks.stream().filter(mark -> mark.getSubjectGroup().getId().equals(subjectGroup.getId())).collect(Collectors.toSet());
         subjectWithMarksResponse.setMarks(newMarks.stream().map(markMapper::mapToDto).collect(Collectors.toSet()));
 
         return subjectWithMarksResponse;

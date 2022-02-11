@@ -6,17 +6,15 @@ import pl.pabjan.schoolmanagementsystem.model.Mark;
 import pl.pabjan.schoolmanagementsystem.model.dto.MarkRequest;
 import pl.pabjan.schoolmanagementsystem.model.dto.MarkResponse;
 import pl.pabjan.schoolmanagementsystem.repository.StudentRepo;
-import pl.pabjan.schoolmanagementsystem.repository.SubjectRepo;
+import pl.pabjan.schoolmanagementsystem.repository.SubjectGroupRepo;
 
-import java.time.Instant;
 import java.time.LocalDate;
-import java.util.List;
 
 @Component
 @AllArgsConstructor
 public class MarkMapper {
     private final StudentRepo studentRepo;
-    private final SubjectRepo subjectRepo;
+    private final SubjectGroupRepo subjectGroupRepo;
 
     public Mark map(MarkRequest markRequest) {
         Mark mark = new Mark();
@@ -24,7 +22,7 @@ public class MarkMapper {
         mark.setDescription(markRequest.getDescription());
         mark.setInserted(LocalDate.now());
         mark.setStudent(studentRepo.getById(markRequest.getStudentId()));
-        mark.setSubject(subjectRepo.getById(markRequest.getSubjectId()));
+        mark.setSubjectGroup(subjectGroupRepo.getById(markRequest.getSubjectGroupId()));
 
         return mark;
     }
@@ -34,7 +32,7 @@ public class MarkMapper {
         markResponse.setMark(mark.getMark());
         markResponse.setInserted(mark.getInserted());
         markResponse.setDescription(mark.getDescription());
-        markResponse.setSubjectName(mark.getSubject().getName());
+        markResponse.setSubjectName(mark.getSubjectGroup().getSubject().getName());
 
         return markResponse;
     }

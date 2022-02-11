@@ -9,6 +9,6 @@ create table teacher
     lastname      varchar(100) not null,
     date_of_birth date         not null,
     role          varchar(20)  not null,
-    subject_id    bigint,
+    subject_group_id    bigint,
     primary key (id)
 ) engine=InnoDB AUTO_INCREMENT = 10000;

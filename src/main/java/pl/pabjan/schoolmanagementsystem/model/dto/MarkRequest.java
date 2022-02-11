@@ -13,6 +13,6 @@ import java.time.LocalDate;
 public class MarkRequest {
     private double mark;
     private String description;
-    private Long subjectId;
+    private Long subjectGroupId;
     private Long studentId;
 }
