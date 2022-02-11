@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.List;
+import java.util.Set;
 
 @Data
 @AllArgsConstructor
@@ -13,5 +14,5 @@ public class StudentWithAllSubjectMarks {
 
     private String name;
     private String lastname;
-    private List<SubjectWithMarksResponse> subjectsWithMarks;
+    private Set<SubjectWithMarksResponse> subjectsWithMarks;
 }

@@ -4,10 +4,9 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import pl.pabjan.schoolmanagementsystem.model.User.Student;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @EqualsAndHashCode(callSuper = true)
 @Data
@@ -20,9 +19,12 @@ public class Attendance extends AbstractModel {
     @Column(name = "was_present")
     private boolean wasPresent;
 
-    @Column(name = "subject_id")
-    private Long subjectId;
+    @ManyToOne
+    @JoinColumn(name = "subject_id")
+    private Subject subject;
 
-    @Column(name = "student_id")
-    private Long studentId;
+
+    @ManyToOne
+    @JoinColumn(name = "student_id")
+    private Student student;
 }

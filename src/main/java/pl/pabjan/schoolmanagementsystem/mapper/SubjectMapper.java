@@ -4,10 +4,12 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 import pl.pabjan.schoolmanagementsystem.model.Mark;
 import pl.pabjan.schoolmanagementsystem.model.Subject;
+import pl.pabjan.schoolmanagementsystem.model.SubjectGroup;
 import pl.pabjan.schoolmanagementsystem.model.dto.MarkResponse;
 import pl.pabjan.schoolmanagementsystem.model.dto.SubjectWithMarksResponse;
 
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 @Component
@@ -15,12 +17,11 @@ import java.util.stream.Collectors;
 public class SubjectMapper {
     private final MarkMapper markMapper;
 
-    public SubjectWithMarksResponse mapToDto(Subject subject, List<Mark> newMarks) {
+    public SubjectWithMarksResponse mapToDto(SubjectGroup subjectGroup, List<Mark> marks) {
         SubjectWithMarksResponse subjectWithMarksResponse = new SubjectWithMarksResponse();
-        subjectWithMarksResponse.setSubjectName(subject.getName());
-        List<Mark> marks = newMarks.stream().filter(mark -> mark.getSubjectId().equals(subject.getId())).collect(Collectors.toList());
-        List<MarkResponse> markResponses = marks.stream().map(mark -> markMapper.mapToDto(mark, subject.getName())).collect(Collectors.toList());
-        subjectWithMarksResponse.setMarks(markResponses);
+        subjectWithMarksResponse.setSubjectName(subjectGroup.getSubject().getName());
+        Set<Mark> newMarks = marks.stream().filter(mark -> mark.getSubject().getId().equals(subjectGroup.getSubject().getId())).collect(Collectors.toSet());
+        subjectWithMarksResponse.setMarks(newMarks.stream().map(markMapper::mapToDto).collect(Collectors.toSet()));
 
         return subjectWithMarksResponse;
     }

@@ -14,5 +14,4 @@ public class TeacherRequest {
     private String name;
     private String lastname;
     private LocalDate dateOfBirth;
-    private Long subjectId;
 }

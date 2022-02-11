@@ -4,10 +4,13 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import pl.pabjan.schoolmanagementsystem.model.User.Student;
+import pl.pabjan.schoolmanagementsystem.model.User.Teacher;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 @EqualsAndHashCode(callSuper = true)
 @Entity
@@ -17,12 +20,18 @@ import javax.persistence.Table;
 @Table(name = "subject_group")
 public class SubjectGroup extends AbstractModel {
 
-    @Column(name = "subject_id")
-    private Long subjectId;
+    @ManyToOne
+    @JoinColumn(name = "subject_id")
+    private Subject subject;
 
-    @Column(name = "teacher_id")
-    private Long teacherId;
+    @ManyToOne
+    @JoinColumn(name = "teacher_id")
+    private Teacher teacher;
 
-    @Column(name = "school_class_id")
-    private Long schoolClassId;
+    @ManyToOne
+    @JoinColumn(name = "school_class_id")
+    private SchoolClass schoolClass;
+
+    @ManyToMany(mappedBy = "subjectGroups")
+    private Set<Student> students;
 }

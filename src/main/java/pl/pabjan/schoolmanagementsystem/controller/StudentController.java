@@ -50,9 +50,9 @@ public class StudentController {
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
-    @GetMapping("/marks/by-subject-id/{id}")
+    @GetMapping("/marks/by-subject-group-id/{id}")
     public ResponseEntity<List<StudentWithMark>> getStudentsWithMarksBySubjectId(@PathVariable Long id) {
-        return ResponseEntity.status(HttpStatus.OK).body(studentService.getStudentsWithMarksBySubjectId(id));
+        return ResponseEntity.status(HttpStatus.OK).body(studentService.getStudentsWithMarksBySubjectGroupId(id));
     }
 
     @GetMapping("/marks/by-current-student")

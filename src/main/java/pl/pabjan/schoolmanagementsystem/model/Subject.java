@@ -7,9 +7,8 @@ import lombok.NoArgsConstructor;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.Type;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.List;
 
 @EqualsAndHashCode(callSuper = true)
 @Data
@@ -21,4 +20,14 @@ public class Subject extends AbstractModel{
 
     @Column(name = "name")
     private String name;
+
+    @OneToMany(mappedBy = "subject", fetch = FetchType.LAZY)
+    private List<Attendance> attendances;
+
+    @OneToMany(mappedBy = "subject", fetch = FetchType.LAZY)
+    private List<SubjectGroup> subjectGroups;
+
+    @OneToMany(mappedBy = "subject", fetch = FetchType.LAZY)
+    private List<Mark> marks;
+
 }

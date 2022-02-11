@@ -5,10 +5,12 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
+import java.util.Set;
+
 @EqualsAndHashCode(callSuper = true)
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class TeacherResponse extends AbstractUserResponse {
-    private String subjectName;
+    private Set<String> subjectName;
 }

@@ -4,10 +4,10 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import pl.pabjan.schoolmanagementsystem.model.User.Student;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.List;
 
 @EqualsAndHashCode(callSuper = true)
 @Data
@@ -19,4 +19,11 @@ public class SchoolClass extends AbstractModel {
 
     @Column(name = "name")
     private String name;
+
+    @OneToMany(mappedBy = "schoolClass", fetch = FetchType.LAZY)
+    private List<SubjectGroup> subjectGroups;
+
+    @OneToMany(mappedBy = "schoolClass", fetch = FetchType.LAZY)
+    private List<Student> schoolClass;
+
 }

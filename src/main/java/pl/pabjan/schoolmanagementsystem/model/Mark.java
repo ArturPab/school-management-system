@@ -4,11 +4,9 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import pl.pabjan.schoolmanagementsystem.model.User.Student;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
-import java.time.Instant;
+import javax.persistence.*;
 import java.time.LocalDate;
 
 @EqualsAndHashCode(callSuper = true)
@@ -28,10 +26,12 @@ public class Mark extends AbstractModel {
     @Column(name = "description")
     private String description;
 
-    @Column(name = "subject_id")
-    private Long subjectId;
+    @ManyToOne
+    @JoinColumn(name = "subject_id")
+    private Subject subject;
 
-    @Column(name = "student_id")
-    private Long studentId;
+    @ManyToOne
+    @JoinColumn(name = "student_id")
+    private Student student;
 
 }

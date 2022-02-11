@@ -33,8 +33,8 @@ public class TeacherController {
     }
 
     @GetMapping("/by-subject-id/{id}")
-    public ResponseEntity<List<TeacherResponse>> getTeachersBySubjectId(@PathVariable Long id) {
-        return ResponseEntity.status(HttpStatus.OK).body(teacherService.getTeachersBySubjectId(id));
+    public ResponseEntity<TeacherResponse> getTeachersBySubjectId(@PathVariable Long id) {
+        return ResponseEntity.status(HttpStatus.OK).body(teacherService.getTeacherBySubjectId(id));
     }
 
     @PostMapping("/create")
