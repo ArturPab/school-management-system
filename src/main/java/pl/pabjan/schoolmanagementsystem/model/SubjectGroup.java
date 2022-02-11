@@ -37,4 +37,7 @@ public class SubjectGroup extends AbstractModel {
 
     @OneToMany(mappedBy = "subjectGroup", fetch = FetchType.LAZY)
     private List<Mark> marks;
+
+    @OneToMany(mappedBy = "subjectGroup", fetch = FetchType.LAZY)
+    private List<Attendance> attendances;
 }

@@ -20,8 +20,8 @@ public class Attendance extends AbstractModel {
     private boolean wasPresent;
 
     @ManyToOne
-    @JoinColumn(name = "subject_id")
-    private Subject subject;
+    @JoinColumn(name = "subject_group_id")
+    private SubjectGroup subjectGroup;
 
 
     @ManyToOne
